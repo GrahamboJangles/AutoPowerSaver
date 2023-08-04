@@ -10,4 +10,4 @@ HIGH_PERFORMANCE_SCHEME = "05d26255-5cd8-41c0-b290-d1d472bca0f9"
 GPU_HWID = "PCI\VEN_10DE&DEV_25A0&SUBSYS_143E1025&REV_A1"
 ```
 
-You can get these values using `cmd.exe powercfg /list` and the GPU_HWID you can find using Device Manager -> Properties -> Details -> then selecting the topmost value under the Hardware Ids values. You can also use devcon.exe (which is a cmd interface for device manager from Microsoft)
+You can get these values using `cmd.exe powercfg /list` and the GPU_HWID you can find using Device Manager -> Properties -> Details -> then selecting the topmost value under the Hardware Ids values. You can also use [devcon.exe (which is a cmd interface for device manager from Microsoft)](https://github.com/Drawbackz/DevCon-Installer/releases)
