@@ -8,7 +8,8 @@ import ctypes
 from ctypes.wintypes import WORD, DWORD, LONG, WCHAR, SHORT
 
 POWER_SAVER_SCHEME = "e0c9d4c7-ac96-4ba8-9a87-57290851629c"  
-HIGH_PERFORMANCE_SCHEME = "05d26255-5cd8-41c0-b290-d1d472bca0f9"  
+HIGH_PERFORMANCE_SCHEME = "05d26255-5cd8-41c0-b290-d1d472bca0f9"
+GPU_HWID = "PCI\VEN_10DE&DEV_25A0&SUBSYS_143E1025&REV_A1"
 
 # Constants
 ENUM_CURRENT_SETTINGS = -1
@@ -115,14 +116,14 @@ def change_refresh_rate(refresh_rate):
 
 def disable_gpu_and_reduce_refresh_rate():
     print("Disabling GPU...")
-    os.system('devcon disable "PCI\VEN_10DE&DEV_25A0&SUBSYS_143E1025&REV_A1"')
+    os.system(f'devcon disable "{GPU_HWID}"')
     change_refresh_rate(60)
     print("Switching to Power Saver Scheme")
     os.system(f'powercfg /setactive {POWER_SAVER_SCHEME}')
 
 def enable_gpu_and_increase_refresh_rate():
     print("Enabling GPU...")
-    os.system('devcon enable "PCI\VEN_10DE&DEV_25A0&SUBSYS_143E1025&REV_A1"')
+    os.system(f'devcon enable "{GPU_HWID}"')
     change_refresh_rate(144)
     print("Switching to High Performance Scheme")
     os.system(f'powercfg /setactive {HIGH_PERFORMANCE_SCHEME}')
