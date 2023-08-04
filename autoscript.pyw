@@ -10,6 +10,7 @@ from ctypes.wintypes import WORD, DWORD, LONG, WCHAR, SHORT
 POWER_SAVER_SCHEME = "e0c9d4c7-ac96-4ba8-9a87-57290851629c"  
 HIGH_PERFORMANCE_SCHEME = "05d26255-5cd8-41c0-b290-d1d472bca0f9"
 GPU_HWID = "PCI\VEN_10DE&DEV_25A0&SUBSYS_143E1025&REV_A1"
+LOOP_TIME = 5
 
 # Constants
 ENUM_CURRENT_SETTINGS = -1
@@ -143,7 +144,7 @@ def main_loop():
                 print("Running on battery, enabling power saving mode.")
                 disable_gpu_and_reduce_refresh_rate()
             last_ac_status = ac_status
-        time.sleep(5)  # Wait for a while before checking again
+        time.sleep(LOOP_TIME)  # Wait for a while before checking again
 
 if __name__ == '__main__':
     if not is_admin():
